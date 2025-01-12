@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { ThemeCard } from "@/components/ui/theme-card";
+import { ThemePagination } from "@/components/ui/theme-pagination";
+
+const themesPerPage = 16;
+const totalThemes = 88;
 ---
 
 <Layout>
@@ -8,7 +12,7 @@ import { ThemeCard } from "@/components/ui/theme-card";
         class="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-2 h-full"
     >
         {
-            Array.from({ length: 16 }).map(() => (
+            Array.from({ length: themesPerPage }).map(() => (
                 <ThemeCard
                     name="Spectral Theme"
                     description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. "
@@ -22,5 +26,11 @@ import { ThemeCard } from "@/components/ui/theme-card";
                 />
             ))
         }
+    </div>
+
+    <div class="flex justify-center py-24">
+        <ThemePagination
+            pagination={{ page: 1, perPage: themesPerPage, total: totalThemes }}
+        />
     </div>
 </Layout>
