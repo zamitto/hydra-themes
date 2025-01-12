@@ -1,8 +1,26 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { ThemeCard } from "@/components/ui/theme-card";
 ---
 
 <Layout>
-	
+    <div
+        class="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-2 h-full"
+    >
+        {
+            Array.from({ length: 16 }).map(() => (
+                <ThemeCard
+                    name="Spectral Theme"
+                    description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. "
+                    image="@/src/themes/spectral/screenshot.webp"
+                    author="Spectre"
+                    colors={{
+                        accent: "#27272a33ssssss",
+                        surface: "#27272a33",
+                        background: "#27272a33",
+                    }}
+                />
+            ))
+        }
+    </div>
 </Layout>

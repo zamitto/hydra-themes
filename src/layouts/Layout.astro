@@ -34,7 +34,9 @@ import { Header } from '@/layouts/header';
 	</head>
 	<body>
 		<Header client:load />
-		<slot />
+		<div class="w-full max-w-screen-2xl mx-auto overflow-hidden p-4 min-h-screen antialiased">
+			<slot />
+		</div>
 	</body>
 </html>
 
