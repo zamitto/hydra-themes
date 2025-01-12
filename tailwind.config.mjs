@@ -7,6 +7,9 @@ export default {
 			screens: {
 				'xs': '425px',
 			},
+			fontFamily: {
+				sans: ['Satoshi', 'sans-serif'],
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
