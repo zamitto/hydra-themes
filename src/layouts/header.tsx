@@ -16,9 +16,10 @@ export const Header = () => {
                         width={30}
                         height={30}
                         decoding="async"
-                        loading="lazy"
+                        loading="eager"
+                        className="dark:invert"
                     />
-                    <span className="text-lg font-medium hidden md:flex">Theme Store</span>
+                    <span className="text-xl font-semibold hidden md:flex">Theme Store</span>
                 </a>
 
                 <div className="flex items-center">
@@ -41,7 +42,7 @@ export const Header = () => {
                             width={19}
                             height={19}
                             decoding="async"
-                            loading="lazy"
+                            loading="eager"
                             className="dark:invert transition-all duration-500"
                         />
                     </a>
