@@ -9,14 +9,17 @@ export const ThemeCard = (theme: Theme) => {
             </div>
 
             <div className="w-full mt-2 p-2 flex flex-col gap-4">
-                <div className="flex items-center gap-2">
-                    <h4 className="text-xs text-muted-foreground uppercase font-medium">{theme.author}</h4>
+                <div className="flex items-center gap-2 justify-between">
+                    <h4 className="text-xs text-muted-foreground uppercase font-medium inline-flex flex-row items-center gap-1">
+                        <span>by</span>
+                        <span>{theme.author}</span>
+                    </h4>
                     
-                    <div className="bg-muted-foreground/20 w-full h-[1px]"></div>
+                    <div className="bg-muted/50 w-full h-[1px]"></div>
                     
                     <div className="flex items-center gap-2">
                         {Object.entries(theme.colors).map(([key, value]) => (
-                            <div className="w-[14px] h-[14px] rounded-full" style={{ backgroundColor: value }}></div>
+                            <div key={key} className="w-[14px] h-[14px] rounded-full" style={{ backgroundColor: value }}></div>
                         ))}
                     </div>
                 </div>
