@@ -14,8 +14,8 @@ export const Header = () => {
                     <img
                         src={Logo.src}
                         alt="Hydra Logo"
-                        width={30}
-                        height={30}
+                        width={28}
+                        height={28}
                         decoding="async"
                         loading="eager"
                         className="dark:invert"
