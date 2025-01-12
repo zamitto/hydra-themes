@@ -4,10 +4,11 @@ import { ModeToggle } from "@/components/ui/theme-mode";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { I18nSelector } from "@/components/ui/i18n-selector";
 
 export const Header = () => {
     return (
-        <header className="border-grid sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <header className="border-grid fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="max-w-screen-2xl mx-auto w-full px-4 flex flex-row items-center justify-between xs:h-14 h-12">
                 <a href="/" className="flex items-center gap-2">
                     <img
@@ -46,6 +47,8 @@ export const Header = () => {
                             className="dark:invert transition-all duration-500"
                         />
                     </a>
+
+                    <I18nSelector />
 
                     <ModeToggle />
                 </div>
