@@ -1,5 +1,6 @@
 ---
 import '@/styles/globals.css';
+import { Header } from '@/layouts/header';
 ---
 
 <script is:inline>
@@ -32,6 +33,7 @@ import '@/styles/globals.css';
 		<title>Astro Basics</title>
 	</head>
 	<body>
+		<Header client:load />
 		<slot />
 	</body>
 </html>
