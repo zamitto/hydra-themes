@@ -1,0 +1,17 @@
+name: Unlock badge
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: closed
+
+jobs:
+  unlock-badge:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Unlock Theme Badge
+        run: |
+          curl --location '${{ vars.STAGING_API_URL }}/badge/theme' --header 'Content-Type: application/json' --header 'hydra-token: ${{ secrets.STAGING_HYDRA_HEADER_SECRET }}' --data '{"githubUser": "${{ github.event.pull_request.user.login }}"}'
