@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const imageSchema = z.string().refine(
-    (value) => {
+    (value: string) => {
         return value.endsWith('/screenshot.webp') &&
             value.startsWith('@/src/themes/') &&
             value.split('/').length === 5;

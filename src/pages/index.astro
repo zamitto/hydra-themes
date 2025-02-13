@@ -2,35 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 import { ThemeCard } from "@/components/ui/theme-card";
 import { ThemePagination } from "@/components/ui/theme-pagination";
-
-const themesPerPage = 16;
-const totalThemes = 88;
+import { Button } from "@/components/ui/button";
+import { ThemeList } from "@/components/ui/theme-list";
+import fs from "fs";
+import path from "path";
+const themes = fs.readdirSync(path.join(process.cwd(), "src/themes"));
 ---
 
 <Layout>
-    <div
-        class="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 h-full mt-10 pt-6"
-    >
-        {
-            Array.from({ length: themesPerPage }).map((_, idx) => (
-                <ThemeCard
-                    name="Spectral Theme"
-                    description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. "
-                    image="@/src/themes/spectral/screenshot.webp"
-                    author="Spectre"
-                    colors={{
-                        accent: "#27272a33",
-                        surface: "#27272a33",
-                        background: "#27272a33",
-                    }}
-                />
-            ))
-        }
-    </div>
+    <ThemeList client:load themes={themes} />
 
-    <div class="flex justify-center py-24">
-        <ThemePagination
-            pagination={{ page: 1, perPage: themesPerPage, total: totalThemes }}
-        />
+    <div class="flex justify-center py-24 absolute bottom-0 w-full left-0">
+        <ThemePagination pagination={{ page: 1, perPage: 16, total: themes.length }} />
     </div>
 </Layout>
