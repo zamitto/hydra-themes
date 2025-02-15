@@ -12,7 +12,8 @@ const themes = fs.readdirSync(path.join(process.cwd(), "src/themes"));
 <Layout>
     <ThemeList client:load themes={themes} />
 
-    <div class="flex justify-center py-24 absolute bottom-0 w-full left-0">
+    <!-- TODO: finish pagination -->
+    <!-- <div class="flex justify-center py-24 absolute bottom-0 w-full left-0">
         <ThemePagination pagination={{ page: 1, perPage: 16, total: themes.length }} />
-    </div>
+    </div> -->
 </Layout>
