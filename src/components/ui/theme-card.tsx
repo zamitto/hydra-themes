@@ -1,9 +1,18 @@
 import type { Theme } from '@/lib/schemas/theme';
-import { ArrowRightIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const ThemeCard = (theme: Theme) => {
+
+    const handleClick = () => {
+        const themeName = theme.name.toLowerCase().replace(/\s+/g, '-');
+        window.location.href = `hydralauncher://install-theme?theme=${themeName}&author=${theme.author}`;
+    };
+
     return (
-        <a href={`/theme/${theme.name}`} className="w-full border rounded-xl p-2 group hover:bg-muted/20 transition-all">
+        <div
+            className="w-full border rounded-xl p-2 group hover:bg-muted/20 transition-all cursor-pointer"
+            onClick={handleClick}
+        >
             <div className="bg-muted/20 w-full h-48 rounded-lg">
                 <img src={theme.image} alt={theme.name} className="w-full h-full object-cover rounded-lg" />
             </div>
@@ -16,9 +25,9 @@ export const ThemeCard = (theme: Theme) => {
 
                     <div className="bg-muted/50 flex-1 h-[1px]"></div>
 
-                    <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-all ml-1" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-all ml-1" />
                 </div>
             </div>
-        </a>
+        </div>
     )
 }
