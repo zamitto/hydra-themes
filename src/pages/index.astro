@@ -4,13 +4,11 @@ import { ThemeCard } from "@/components/ui/theme-card";
 import { ThemePagination } from "@/components/ui/theme-pagination";
 import { Button } from "@/components/ui/button";
 import { ThemeList } from "@/components/ui/theme-list";
-import fs from "fs";
-import path from "path";
-const themes = fs.readdirSync(path.join(process.cwd(), "src/themes"));
+import themeList from "@/lib/themes.json";
 ---
 
 <Layout>
-    <ThemeList client:load themes={themes} />
+    <ThemeList client:load themes={themeList} />
 
     <!-- TODO: finish pagination -->
     <!-- <div class="flex justify-center py-24 absolute bottom-0 w-full left-0">

@@ -5,7 +5,7 @@ import { Frown} from "lucide-react";
 import { Button } from "./button";
 
 interface ThemeListProps {
-    themes: string[];
+    themes: { name: string, author: string }[];
 }
 
 export const ThemeList = ({ themes }: ThemeListProps) => {
@@ -15,10 +15,10 @@ export const ThemeList = ({ themes }: ThemeListProps) => {
         if (!query.length) return true;
 
         if (query.length < 3) {
-            return theme.toLowerCase().startsWith(query.toLowerCase());
+            return theme.name.toLowerCase().startsWith(query.toLowerCase());
         }
 
-        return theme.toLowerCase().includes(query.toLowerCase());
+        return theme.name.toLowerCase().includes(query.toLowerCase());
     });
 
     return (
@@ -28,9 +28,9 @@ export const ThemeList = ({ themes }: ThemeListProps) => {
             {
                 filteredThemes.length ? filteredThemes.map((theme) => (
                     <ThemeCard
-                        name={theme}
-                        image={`src/themes/${theme}/screenshot.webp`}
-                        author="Spectre"
+                        name={theme.name}
+                        image={`/themes/${theme.name.toLowerCase().replace(/\s+/g, '-')}.webp`}
+                        author={theme.author}
                     />
                 )) : (
                     <div className="col-span-4 flex items-center justify-center flex-col gap-6 mt-32 text-center">
