@@ -1,7 +1,7 @@
 # build output
 dist/
 public/themes/
-
+src/lib/themes.json
 # generated types
 .astro/
 

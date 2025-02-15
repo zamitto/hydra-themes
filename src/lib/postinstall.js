@@ -34,4 +34,19 @@ const copyAndRenameCSSFiles = (themesPath, publicThemesPath) => {
     });
 }
 
+export const genThemeList = () => {
+    const themes = fs.readdirSync(path.join(process.cwd(), "src/themes"));
+
+    const themeList = themes.map((theme) => {
+        const folder = fs.readdirSync(path.join(process.cwd(), "src/themes", theme));
+        const cssFile = folder.find(file => file.endsWith('.css'));
+        const authorCode = cssFile ? cssFile.split('-')[1].split('.')[0] : '';
+        return { name: theme, author: authorCode };
+    });
+
+    const outputPath = path.join(process.cwd(), 'src/lib', 'themes.json');
+    fs.writeFileSync(outputPath, JSON.stringify(themeList, null, 2));
+}
+
 copyAndRenameCSSFiles(themesPath, publicThemesPath);
+genThemeList();
