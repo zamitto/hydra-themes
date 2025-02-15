@@ -9,6 +9,9 @@
     "astro": "astro",
     "postinstall": "node src/lib/postinstall.js"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "devDependencies": {
     "@types/node": "^22.13.1",
     "@types/react": "^19.0.5",
