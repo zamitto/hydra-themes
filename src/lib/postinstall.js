@@ -16,12 +16,25 @@ const copyAndRenameCSSFiles = (themesPath, publicThemesPath) => {
         if (item.isDirectory()) {
             const themeDir = path.join(themesPath, item.name);
             const cssFiles = fs.readdirSync(themeDir).filter(file => file.endsWith('.css'));
+            const webpFiles = fs.readdirSync(themeDir).filter(file => file.endsWith('.webp'));
 
-            if (cssFiles.length === 0) return;
+            if (cssFiles.length === 0 && webpFiles.length === 0) return;
 
             cssFiles.forEach(cssFile => {
                 const sourcePath = path.join(themeDir, cssFile);
                 const newFileName = `${item.name.toLowerCase().replace(/\s+/g, '-')}.css`;
+                const destPath = path.join(publicThemesPath, newFileName);
+
+                try {
+                    fs.copyFileSync(sourcePath, destPath);
+                } catch (err) {
+                    console.error(err);
+                }
+            });
+
+            webpFiles.forEach(webpFile => {
+                const sourcePath = path.join(themeDir, webpFile);
+                const newFileName = `${item.name.toLowerCase().replace(/\s+/g, '-')}.webp`;
                 const destPath = path.join(publicThemesPath, newFileName);
 
                 try {
