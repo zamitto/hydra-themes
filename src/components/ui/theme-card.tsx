@@ -1,7 +1,5 @@
 import type { Theme } from '@/lib/schemas/theme';
-import * as icons from 'lucide-react';
-
-const { ArrowRight } = icons;
+import { ArrowRight } from 'lucide-react';
 
 export const ThemeCard = (theme: Theme) => {
 
