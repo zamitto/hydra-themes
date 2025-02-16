@@ -40,7 +40,7 @@ export function ThemeCard({ theme }: Readonly<ThemeCardProps>) {
               className="size-6 rounded-full"
             />
             <a
-              href={`hydralauncher://profile?user=${theme.author.displayName}`}
+              href={`hydralauncher://profile?userId=${theme.author.id}`}
               className="cursor-pointer text-xs text-muted-foreground hover:underline"
             >
               {theme.author.displayName}
