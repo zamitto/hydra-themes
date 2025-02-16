@@ -3,10 +3,11 @@ import Github from "@/assets/github.svg";
 import { ModeToggle } from "@/components/ui/theme-mode";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search, Upload } from "lucide-react";
 import { I18nSelector } from "@/components/ui/i18n-selector";
 import { useStore } from "@nanostores/react";
 import { searchQuery } from "@/stores/search";
+import { cn } from "@/lib/utils";
 
 export function Header() {
   const query = useStore(searchQuery);
@@ -67,6 +68,19 @@ export function Header() {
           <I18nSelector />
 
           <ModeToggle />
+
+          <a
+            href="https://github.com/hydralauncher/hydra-themes/pulls"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "ml-2 h-8 rounded-lg",
+            )}
+          >
+            <Upload className="size-4" />
+            <span className="text-sm">Upload Theme</span>
+          </a>
         </div>
       </div>
     </header>
