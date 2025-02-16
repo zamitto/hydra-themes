@@ -7,9 +7,8 @@ export interface ThemeCardProps {
 
 export function ThemeCard({ theme }: Readonly<ThemeCardProps>) {
   const handleClick = () => {
-    const themeName = theme.name.toLowerCase().replace(/\s+/g, "-");
     window.open(
-      `hydralauncher://install-theme?theme=${themeName}&author=${theme.author.displayName}`,
+      `hydralauncher://install-theme?theme=${theme.name}&authorId=${theme.author.id}&authorName=${theme.author.displayName}`,
       "_blank",
     );
   };
