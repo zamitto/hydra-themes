@@ -71,6 +71,8 @@ export function Header() {
 
           <a
             href="https://github.com/hydralauncher/hydra-themes/pulls"
+            target="_blank"
+            rel="noopener noreferrer"
             className={cn(
               buttonVariants({ variant: "outline" }),
               "ml-2 h-8 rounded-lg",
