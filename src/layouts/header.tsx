@@ -37,7 +37,7 @@ export function Header() {
 
         <div className="flex items-center">
           <div className="mr-2 items-center gap-2">
-            <div className="relative w-full">
+            <div className="relative w-full hidden sm:flex">
               <Search className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 value={query}
@@ -65,7 +65,7 @@ export function Header() {
             />
           </a>
 
-          <I18nSelector />
+          {/* <I18nSelector /> */}
 
           <ModeToggle />
 
@@ -75,7 +75,7 @@ export function Header() {
             rel="noopener noreferrer"
             className={cn(
               buttonVariants({ variant: "outline" }),
-              "ml-2 h-8 rounded-lg",
+              "ml-2 h-8 rounded-lg hidden sm:flex",
             )}
           >
             <Upload className="size-4" />

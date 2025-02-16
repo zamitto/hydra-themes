@@ -23,7 +23,7 @@ export function ThemeList({ themes }: ThemeListProps) {
   });
 
   return (
-    <div className="relative mt-10 grid h-full grid-cols-4 gap-6 pt-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="relative mt-10 grid h-full grid-cols-1 gap-6 pt-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {filteredThemes.length ? (
         filteredThemes.map((theme) => <ThemeCard theme={theme} />)
       ) : (
