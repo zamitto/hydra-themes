@@ -53,7 +53,14 @@ Promise.all(
 
     fs.cpSync(
       path.join(folderPath),
-      path.join(import.meta.dirname, "..", "..", "public", "themes", themeName),
+      path.join(
+        import.meta.dirname,
+        "..",
+        "..",
+        "public",
+        "themes",
+        themeName.toLowerCase(),
+      ),
       { recursive: true },
     );
 
@@ -69,7 +76,7 @@ Promise.all(
         "..",
         "public",
         "themes",
-        themeName,
+        themeName.toLowerCase(),
         `author${fileExt}`,
       ),
       Buffer.from(authorResponse),

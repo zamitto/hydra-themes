@@ -36,7 +36,7 @@ export function ThemeCard({ theme }: Readonly<ThemeCardProps>) {
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <img
-              src={`/themes/${theme.name}/${theme.authorImage}`}
+              src={`/themes/${theme.name.toLowerCase()}/${theme.authorImage}`}
               alt={theme.author.displayName}
               className="size-6 rounded-full"
             />
