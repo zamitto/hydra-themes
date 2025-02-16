@@ -1,33 +1,54 @@
-import type { Theme } from '@/lib/schemas/theme';
-import { ArrowRight } from 'lucide-react';
+import type { Theme } from "@/lib/schemas/theme";
+import { ArrowRight } from "lucide-react";
 
-export const ThemeCard = (theme: Theme) => {
+export interface ThemeCardProps {
+  theme: Theme;
+}
 
-    const handleClick = () => {
-        const themeName = theme.name.toLowerCase().replace(/\s+/g, '-');
-        window.location.href = `hydralauncher://install-theme?theme=${themeName}&author=${theme.author}`;
-    };
+export function ThemeCard({ theme }: Readonly<ThemeCardProps>) {
+  const handleClick = () => {
+    const themeName = theme.name.toLowerCase().replace(/\s+/g, "-");
+    window.open(
+      `hydralauncher://install-theme?theme=${themeName}&author=${theme.author.displayName}`,
+      "_blank",
+    );
+  };
 
-    return (
-        <div
-            className="w-full border rounded-xl p-2 group hover:bg-muted/20 transition-all cursor-pointer"
-            onClick={handleClick}
-        >
-            <div className="bg-muted/20 w-full h-48 rounded-lg">
-                <img src={theme.image} alt={theme.name} className="w-full h-full object-cover rounded-lg" />
-            </div>
+  return (
+    <div
+      className="group w-full cursor-pointer rounded-xl border p-2 transition-all hover:bg-muted/20"
+      onClick={handleClick}
+    >
+      <div className="h-48 w-full rounded-lg bg-muted/20">
+        <img
+          src={`/themes/${theme.name}/${theme.screenshotFile}`}
+          alt={theme.name}
+          className="size-full rounded-lg object-cover"
+        />
+      </div>
 
-            <div className="w-full mt-2 p-2 flex flex-col gap-4">
-                <div className="flex items-center gap-2 justify-between">
-                    <h4 className="text-xs text-muted-foreground uppercase font-medium inline-flex flex-row items-center gap-1">
-                        <span>{theme.name}</span>
-                    </h4>
+      <div className="mt-2 flex w-full flex-col gap-4 p-2">
+        <div className="flex items-center justify-between gap-2">
+          <h4 className="inline-flex flex-row items-center gap-1 text-xs font-medium uppercase text-muted-foreground">
+            <span>{theme.name}</span>
+          </h4>
 
-                    <div className="bg-muted/50 flex-1 h-[1px]"></div>
+          <div className="h-px flex-1 bg-muted/50"></div>
 
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-all ml-1" />
-                </div>
-            </div>
+          <ArrowRight className="ml-1 size-4 transition-all group-hover:translate-x-1" />
         </div>
-    )
+
+        <div className="flex items-center gap-2">
+          <img
+            src={`/themes/${theme.name}/${theme.authorImage}`}
+            alt={theme.author.displayName}
+            className="size-6 rounded-full"
+          />
+          <span className="text-xs text-muted-foreground">
+            {theme.author.displayName}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
 }

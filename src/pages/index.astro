@@ -1,17 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { ThemeCard } from "@/components/ui/theme-card";
-import { ThemePagination } from "@/components/ui/theme-pagination";
-import { Button } from "@/components/ui/button";
 import { ThemeList } from "@/components/ui/theme-list";
 import themeList from "@/lib/themes.json";
 ---
 
-<Layout>
-    <ThemeList client:load themes={themeList} />
+<Layout title="Hydra Themes">
+  <ThemeList client:load themes={themeList} />
 
-    <!-- TODO: finish pagination -->
-    <!-- <div class="flex justify-center py-24 absolute bottom-0 w-full left-0">
+  <!-- TODO: finish pagination -->
+  <!-- <div class="flex justify-center py-24 absolute bottom-0 w-full left-0">
         <ThemePagination pagination={{ page: 1, perPage: 16, total: themes.length }} />
     </div> -->
 </Layout>

@@ -1,20 +1,15 @@
-import { z } from 'zod';
-
-const imageSchema = z.string().refine(
-    (value: string) => {
-        return value.endsWith('/screenshot.webp') &&
-            value.startsWith('@/src/themes/') &&
-            value.split('/').length === 5;
-    },
-    {
-        message: 'Image must be in webp format and named as screenshot.webp and be located in @/src/themes/{theme_name}/',
-    }
-);
+import { z } from "zod";
 
 export const themeSchema = z.object({
-    name: z.string().min(3).max(56),
-    image: imageSchema,
-    author: z.string().min(3).max(24),
+  name: z.string().min(3).max(56),
+  screenshotFile: z.string().min(3).max(256),
+  cssFile: z.string().min(3).max(256),
+  author: z.object({
+    id: z.string(),
+    displayName: z.string(),
+    profileImageUrl: z.string(),
+  }),
+  authorImage: z.string().min(3).max(256),
 });
 
 export type Theme = z.infer<typeof themeSchema>;

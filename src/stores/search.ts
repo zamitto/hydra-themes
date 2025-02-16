@@ -1,4 +1,3 @@
-import { atom, type PreinitializedWritableAtom } from 'nanostores';
+import { atom, type PreinitializedWritableAtom } from "nanostores";
 
-export const searchQuery: PreinitializedWritableAtom<string> = atom('');
-
+export const searchQuery: PreinitializedWritableAtom<string> = atom("");
