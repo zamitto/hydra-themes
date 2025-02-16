@@ -15,12 +15,13 @@ const copyAndRenameCSSFiles = (themesPath, publicThemesPath) => {
     items.forEach(item => {
         if (item.isDirectory()) {
             const themeDir = path.join(themesPath, item.name);
-            const cssFiles = fs.readdirSync(themeDir).filter(file => file.endsWith('.css'));
-            const webpFiles = fs.readdirSync(themeDir).filter(file => file.endsWith('.webp'));
+            const cssFile = fs.readdirSync(themeDir).find(file => file.endsWith('.css'));
+            const screenshot = fs.readdirSync(themeDir).find(file => file.startsWith('screenshot'));
 
-            if (cssFiles.length === 0 && webpFiles.length === 0) return;
+            if (!cssFile && !screenshot) return;
 
-            cssFiles.forEach(cssFile => {
+
+            {
                 const sourcePath = path.join(themeDir, cssFile);
                 const newFileName = `${item.name.toLowerCase().replace(/\s+/g, '-')}.css`;
                 const destPath = path.join(publicThemesPath, newFileName);
@@ -30,19 +31,18 @@ const copyAndRenameCSSFiles = (themesPath, publicThemesPath) => {
                 } catch (err) {
                     console.error(err);
                 }
-            });
+            }
 
-            webpFiles.forEach(webpFile => {
-                const sourcePath = path.join(themeDir, webpFile);
-                const newFileName = `${item.name.toLowerCase().replace(/\s+/g, '-')}.webp`;
-                const destPath = path.join(publicThemesPath, newFileName);
+            const sourcePath = path.join(themeDir, screenshot);
+            const ext = path.extname(screenshot);
+            const newFileName = `${item.name.toLowerCase()}${ext}`;
+            const destPath = path.join(publicThemesPath, newFileName);
 
-                try {
-                    fs.copyFileSync(sourcePath, destPath);
-                } catch (err) {
-                    console.error(err);
-                }
-            });
+            try {
+                fs.copyFileSync(sourcePath, destPath);
+            } catch (err) {
+                console.error(err);
+            }
         }
     });
 }
