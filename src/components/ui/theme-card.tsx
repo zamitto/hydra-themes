@@ -17,7 +17,7 @@ export function ThemeCard({ theme }: Readonly<ThemeCardProps>) {
     <div className="group w-full rounded-xl border p-2 transition-all">
       <div className="h-48 w-full rounded-lg bg-muted/20">
         <img
-          src={`/themes/${theme.name}/${theme.screenshotFile}`}
+          src={`/themes/${theme.name.toLowerCase()}/${theme.screenshotFile}`}
           alt={theme.name}
           className="size-full rounded-lg object-cover"
         />
